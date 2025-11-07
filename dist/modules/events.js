@@ -108,7 +108,6 @@ class Events extends EventEmitter {
     const getAll = () => {
       this._getMessages(timeout, messageLimit).then(results => {
         this.emit('messages', results);
-        console.log(results);
       }).catch(error => {
         this.emit('messages:error', error);
       });
@@ -141,7 +140,6 @@ class Events extends EventEmitter {
   _createPullPointSubscription() {
     return new Promise((resolve, reject) => {
       this.createPullPointSubscription().then(results => {
-        console.log('CreatePullPointSubscription successful');
         const response = results.data.CreatePullPointSubscriptionResponse;
         const reference = response.SubscriptionReference;
         let subscriptionId = {};
